@@ -78,18 +78,25 @@ export default {
   methods: {
     handleResize(entries, observer) {
       this.caluculate();
+      this.applyStyles();
       this.currentWidth = this.getCurrentWidth();
+    },
+    applyStyles() {
+      /* using v-bind:style caused some weird issues that I couldn't figure out */
+      const styles = this.styles;
+      Object.keys(styles).forEach(prop => {
+        if (styles[prop] === null) {
+          return this.$el.style.removeProperty(prop);
+        } 
+        this.$el.style[prop] = styles[prop];
+      });
     },
     caluculate() {
       Object.keys(this.values)
         .filter(k => this[k])
         .forEach(prop => {
           const value = this.calcValueForProp(prop);
-
-          this.values[prop] = null;
-          this.$nextTick(() => {
-            this.values[prop] = value;
-          });
+          this.values[prop] = value;
         });
     },
     calcValueForProp(prop) {
@@ -157,9 +164,6 @@ export default {
   render(h) {
     return h(
       this.tag,
-      {
-        style: this.styles
-      },
       this.$scopedSlots.default({ width: this.currentWidth })
     );
   }
