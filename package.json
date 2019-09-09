@@ -1,0 +1,26 @@
+{
+  "name": "vue-fluid",
+  "version": "1.0.0",
+  "description": "A Vue component for making fluid designs",
+  "main": "dist/index.js",
+  "scripts": {
+    "watch": "npm run build -- --watch",
+    "build": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "fluid"
+  ],
+  "author": "Amr Noman",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^5.2.1",
+    "laravel-mix": "^4.1.4",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "@juggle/resize-observer": "^2.3.0"
+  }
+}
