@@ -1,6 +1,6 @@
 {
   "name": "vue-fluid",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Vue component for making fluid designs",
   "main": "dist/index.js",
   "scripts": {
